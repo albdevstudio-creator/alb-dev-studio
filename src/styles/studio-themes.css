@@ -1,0 +1,48 @@
+/* Alternate the ALB paper and ink surfaces without changing project artwork. */
+.studio-section.section-light {
+  --muted: #62685b;
+  --stroke: #20281b24;
+  --section-accent: #52751f;
+  background: var(--paper);
+  color: var(--ink);
+}
+.studio-section.section-light .section-heading h2 .word-mask:last-child,
+.studio-section.section-light .eyebrow,
+.studio-section.section-light .about-graphic,
+.studio-section.section-light .pillar-top,
+.studio-section.section-light .pillar h3 > span,
+.studio-section.section-light .about-heading > span + span {
+  color: var(--section-accent);
+}
+.studio-section.section-light .eyebrow > span { background: var(--section-accent); }
+.studio-section.section-light .text-link,
+.studio-section.section-light .round-link { color: var(--ink); }
+.studio-section.section-light .text-link:hover { color: var(--section-accent); }
+.studio-section.section-light .round-link:hover { background: var(--lime); }
+.studio-section.section-light .about-annotation,
+.studio-section.section-light .studio-section-meta > span,
+.studio-section.section-light .portfolio-meta { color: var(--muted); }
+.studio-section.section-light .section-atmosphere > img { mix-blend-mode: multiply; opacity: .05; }
+.studio-section.section-light .section-atmosphere > span { opacity: .25; mix-blend-mode: multiply; }
+.studio-section.section-light .glow-surface::after {
+  background: radial-gradient(320px circle at var(--pointer-x, 50%) var(--pointer-y, 50%), #85a64b18, transparent 70%);
+}
+.studio-process.section-light .timeline-track { background: var(--stroke); }
+.studio-process.section-light .timeline-track > span { background: var(--section-accent); }
+.studio-process.section-light .timeline-dot {
+  background: var(--paper);
+  border-color: var(--section-accent);
+  box-shadow: 0 0 0 7px var(--paper);
+}
+.studio-process.section-light .timeline-number { color: #778b56; }
+.studio-process.section-light .timeline-content h3 { color: var(--ink); }
+.studio-process.section-light .timeline-content p { color: var(--muted); }
+.studio-process.section-light .timeline-content svg,
+.studio-process.section-light .process-coordinate,
+.studio-process.section-light .process-end { color: var(--section-accent); }
+.studio-process.section-light .process-coordinate > span { color: var(--muted); }
+.studio-process.section-light .process-end svg { color: var(--ink); }
+.studio-faq.section-light .faq-index,
+.studio-faq.section-light .faq-item button > svg,
+.studio-faq.section-light .faq-item button:hover,
+.studio-faq.section-light .faq-open button { color: var(--section-accent); }

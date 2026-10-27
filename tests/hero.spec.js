@@ -1,0 +1,60 @@
+import { test, expect } from '@playwright/test'
+
+test('project previews, pinned selection, keyboard and category stay in sync', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 1000 })
+  await page.goto('/')
+  const category = page.locator('.alb-category')
+  const aura = page.getByRole('button', { name: 'Selecionar projeto AURA', exact: true })
+  const pdv = page.getByRole('button', { name: 'Selecionar projeto PDV Core', exact: true })
+  const mobile = page.getByRole('button', { name: 'Selecionar projeto Aveloz / Mobile', exact: true })
+  await expect(category).toHaveText('Sites')
+  // Use the exposed top strip of the intentionally overlapping rear mockup.
+  const pdvBounds = await pdv.boundingBox()
+  await page.mouse.move(pdvBounds.x + pdvBounds.width * .5, pdvBounds.y + 35)
+  await expect(category).toHaveText('Sites institucionais')
+  await expect(aura).toHaveAttribute('aria-pressed', 'true')
+  await page.mouse.down()
+  await page.mouse.up()
+  await page.mouse.move(10, 100)
+  await expect(pdv).toHaveAttribute('aria-pressed', 'true')
+  await expect(category).toHaveText('Sites institucionais')
+  await mobile.focus()
+  await expect(category).toHaveText('Landing Page')
+  await page.keyboard.press('Enter')
+  await page.getByRole('link', { name: 'Entrar em contato' }).focus()
+  await expect(mobile).toHaveAttribute('aria-pressed', 'true')
+  await expect(category).toHaveText('Landing Page')
+  await page.getByRole('button', { name: 'Destacar AURA', exact: true }).click()
+  await expect(category).toHaveText('Sites')
+  await expect(aura).toHaveAttribute('aria-pressed', 'true')
+})
+
+test('touch selection works without a decorative cursor', async ({ browser }) => {
+  const context = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, reducedMotion: 'reduce' })
+  const page = await context.newPage()
+  await page.goto('/')
+  await page.getByRole('button', { name: 'Destacar PDV Core', exact: true }).tap()
+  await expect(page.locator('.alb-category')).toHaveText('Sites institucionais')
+  await expect(page.locator('.alb-cursor')).toBeHidden()
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
+  await context.close()
+})
+
+test('cursor follows mouse only with motion enabled and leaves cleanly', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'no-preference' })
+  await page.setViewportSize({ width: 1440, height: 1000 })
+  await page.goto('/')
+  await expect(page.locator('.hero-title .word-mask > span').last()).toHaveCSS('opacity', '1')
+  const aura = await page.getByRole('button', { name: 'Selecionar projeto AURA', exact: true }).boundingBox()
+  // Idle floating is intentional: a pointer move does not wait for animation stability.
+  await page.mouse.move(aura.x + aura.width * .4, aura.y + aura.height * .4)
+  await expect(page.locator('.alb-cursor')).toHaveCSS('opacity', '1')
+  await expect(page.locator('.alb-cursor')).toHaveClass(/is-interacting/)
+  await page.mouse.move(5, 100)
+  await expect(page.locator('.alb-cursor')).toHaveCSS('opacity', '0')
+  await page.emulateMedia({ reducedMotion: 'reduce' })
+  await expect(page.locator('.alb-cursor')).toBeHidden()
+  for (const layer of ['.alb-background', '.alb-smoke', '.alb-particles']) {
+    expect(await page.locator(layer).evaluate(el => getComputedStyle(el).animationName)).toBe('none')
+  }
+})

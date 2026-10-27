@@ -1,0 +1,27 @@
+:root {
+  font-family: 'DM Sans Variable',sans-serif;
+  color: #f6f3ee;
+  background: #090909;
+  font-synthesis: none;
+  --ink: #090909;
+  --paper: #f6f3ee;
+  --lime: #c7f36b;
+  --surface: #10110f;
+  --muted: #a5a89e;
+  --stroke: #ffffff16;
+  --gray: #8a8a8a;
+  --line: #e8e5de;
+  --ease: cubic-bezier(.22,1,.36,1);
+  font-size: 18px;
+}
+
+/* Expose the existing design tokens to Tailwind utilities. */
+@theme inline {
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-lime: var(--lime);
+  --color-gray: var(--gray);
+  --color-line: var(--line);
+  --font-display: 'Space Grotesk Variable', sans-serif;
+  --font-body: 'DM Sans Variable', sans-serif;
+}

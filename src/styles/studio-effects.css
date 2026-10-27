@@ -1,0 +1,46 @@
+/* Decorative layers stay behind content and never capture pointer events. */
+.studio-about, .studio-projects { position: relative; isolation: isolate; overflow: clip; }
+.section-atmosphere-quiet { opacity: .5; }
+.section-atmosphere > span {
+  animation: studio-orb var(--orb-duration, 7s) ease-in-out var(--orb-delay, 0s) infinite alternate;
+}
+.section-atmosphere > img { transform-origin: 65% 50%; animation: studio-smoke 20s ease-in-out infinite alternate; }
+.glow-surface { position: relative; isolation: isolate; }
+.glow-surface::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(320px circle at var(--pointer-x, 50%) var(--pointer-y, 50%), #c7f36b18, transparent 70%);
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+.glow-surface:focus-visible::after { opacity: 1; }
+.studio-about .pillar { transition: background .35s, border-color .35s; }
+.studio-projects .portfolio-image-frame > img { transition: transform .7s var(--ease), filter .7s; }
+.studio-brand .brand-application-graphic > svg { animation: studio-turn 35s linear infinite; }
+.studio-differentials .differential-number { transition: color .35s, opacity .35s; }
+.studio-differentials .differential-row { transition: border-color .35s; }
+@media (hover: hover) and (pointer: fine) {
+  .glow-surface:hover::after { opacity: 1; }
+  .studio-services .service-icon svg { transition: transform .45s var(--ease); }
+  .studio-services .service-row:hover .service-icon svg { transform: translateY(-5px) rotate(-8deg); }
+  .studio-about .pillar:hover { background: #c7f36b05; border-color: #c7f36b50; }
+  .studio-differentials .differential-row:hover { border-color: #c7f36b60; }
+  .studio-differentials .differential-row:hover .differential-number { color: var(--lime); opacity: 1; }
+  .studio-projects .portfolio-visual:hover .portfolio-image-frame > img { filter: brightness(1.06); }
+}
+@keyframes studio-smoke {
+  from { transform: translate3d(-2%, 2%, 0) rotate(-2deg) scale(1); }
+  to { transform: translate3d(2%, -3%, 0) rotate(2deg) scale(1.05); }
+}
+@media (max-width: 760px) {
+  .section-atmosphere > span:nth-of-type(n+5) { display: none; }
+  .section-atmosphere > span:nth-of-type(2), .section-atmosphere > span:nth-of-type(3), .section-atmosphere > span:nth-of-type(4) { display: block; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .studio-section *, .studio-section *::before, .studio-section *::after { animation: none !important; transition: none !important; }
+  .glow-surface::after { display: none; }
+}

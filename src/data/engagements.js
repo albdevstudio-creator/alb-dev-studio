@@ -1,0 +1,5 @@
+export const engagements = [
+  { id: 'web', number: '01', format: 'PROJETO PONTUAL', title: 'Uma nova presença.', services: ['Landing Pages', 'Sites Institucionais'], description: 'Do primeiro briefing à publicação. Uma entrega com escopo, etapas e objetivos definidos para o momento da sua marca.', request: 'um projeto de Landing Page ou Site Institucional' },
+  { id: 'design', number: '02', format: 'PACOTE DE DESIGN', title: 'Uma linguagem consistente.', services: ['Design para Redes Sociais'], description: 'Posts, carrosséis e materiais gráficos organizados em um pacote de entregas que acompanha a comunicação da sua marca.', request: 'um pacote de Design para Redes Sociais' },
+  { id: 'care', number: '03', format: 'ACOMPANHAMENTO MENSAL', title: 'Espaço para evoluir.', services: ['Manutenção Web'], description: 'Suporte e melhorias contínuas, com frequência e escopo combinados. Para cuidar da experiência também depois do lançamento.', request: 'acompanhamento mensal de Manutenção Web' },
+]
