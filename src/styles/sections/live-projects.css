@@ -1,4 +1,14 @@
-.live-projects { background: #0d0e0c; }
+.live-projects {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--ink);
+  border-top: 0;
+}
+.live-projects > .alb-atmosphere { z-index: 0; }
+.live-projects > .container { position: relative; z-index: 1; }
+.live-projects .alb-atmosphere-layer { object-fit: cover; object-position: center top; }
+.live-projects .alb-floating-light { width: clamp(24px, 6vw, var(--light-size)); transform: translateX(-50%); }
 .live-projects-heading { position: relative; }
 .live-projects .section-heading { max-width: 960px; margin-bottom: 32px; }
 .live-projects .section-heading h2 { font-size: clamp(36px, 4.5vw, 66px); max-width: 900px; }

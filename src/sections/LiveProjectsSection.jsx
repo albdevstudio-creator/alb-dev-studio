@@ -2,9 +2,11 @@ import { ArrowUpRight } from 'lucide-react'
 import { Reveal } from '../components/animation/Motion'
 import SectionTitle from '../components/ui/SectionTitle'
 import { liveProjects } from '../data/liveProjects'
+import HeroBackgroundEffects from '../components/hero/HeroBackgroundEffects'
 
 export default function LiveProjectsSection() {
   return <section id="projetos-no-ar" className="section section-dark studio-section live-projects" aria-label="Projetos no ar">
+    <HeroBackgroundEffects extended />
     <div className="container">
       <div className="live-projects-heading">
         <SectionTitle

@@ -13,14 +13,21 @@ const lights = [
   [746, 632, 134, 60, 90, 76], [1263, 569, 92, 95, 81, 54],
 ]
 
-export default function HeroBackgroundEffects() {
+// Keep lights visible around the cards when the atmosphere spans a long section.
+const extendedPositions = [
+  [4, 4], [91, 6], [73, 3], [96, 17], [3, 27], [97, 38],
+  [2, 49], [96, 60], [3, 70], [97, 81], [45, 12], [51, 44],
+  [48, 72], [88, 95],
+]
+
+export default function HeroBackgroundEffects({ extended = false }) {
   return <div className="alb-atmosphere" aria-hidden="true">
     <img className="alb-atmosphere-layer alb-background" src={background} alt="" fetchPriority="high" draggable={false} />
     <img className="alb-atmosphere-layer alb-smoke" src={smoke} alt="" draggable={false} />
     <div className="alb-particles">
       {lights.map(([x, y, crop, left, top, size], i) => (
         <svg key={i} className="alb-floating-light" viewBox={`${x} ${y} ${crop} ${crop}`}
-          style={{ left: `${left}%`, top: `${top}%`, '--light-size': `${size}px`, '--duration': `${5 + i % 4}s`, '--delay': `${-i * 1.3}s`, '--drift-x': `${i % 2 ? -20 : 24}px` }}>
+          style={{ left: `${extended ? extendedPositions[i][0] : left}%`, top: `${extended ? extendedPositions[i][1] : top}%`, '--light-size': `${size}px`, '--duration': `${5 + i % 4}s`, '--delay': `${-i * 1.3}s`, '--drift-x': `${i % 2 ? -20 : 24}px` }}>
           <image href={particles} width="1366" height="768" />
         </svg>
       ))}
