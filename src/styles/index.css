@@ -20,3 +20,8 @@
 @import "./studio-themes.css";
 @import "./sections/live-projects.css";
 @import "../components/hero/hero.css";
+@import "./sections/process-journey.css";
+@import "./scrollbar.css";
+@import "./motion-polish.css";
+@import "./sections/site-showcase.css";
+@import "./sections/services-offering.css";

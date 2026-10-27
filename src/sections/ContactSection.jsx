@@ -12,7 +12,7 @@ export default function ContactSection() {
       <Reveal className="contact-brand"><BrandLogo /></Reveal>
       <Reveal><Eyebrow>07 / Vamos conversar?</Eyebrow></Reveal>
       <TextReveal text="Vamos dar forma à sua próxima ideia?" className="contact-title" />
-      <Reveal delay={.1}><p>Conte sobre seu projeto. Vamos encontrar uma solução que una identidade, design e tecnologia.</p></Reveal>
+      <Reveal delay={.1}><p>Um site, artes para suas redes sociais ou uma campanha? Conte o que sua marca precisa e vamos criar uma solução com identidade.</p></Reveal>
       <div className="studio-contact-actions">
         <Reveal delay={.2}><a className="studio-pill studio-pill-lime" href={`mailto:${contact.email}?subject=${encodeURIComponent('Orçamento — ALB Studio Dev')}`}>Solicitar orçamento <Send size={18} aria-hidden="true" /></a></Reveal>
         <Reveal delay={.3}><a className="studio-pill studio-pill-paper" href={whatsappLink()} target="_blank" rel="noreferrer">Falar no WhatsApp <MessageCircle size={18} aria-hidden="true" /></a></Reveal>

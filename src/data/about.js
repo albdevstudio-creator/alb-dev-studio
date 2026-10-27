@@ -2,11 +2,11 @@ import { Layers, Compass, Zap } from 'lucide-react'
 export const pillars = [{
   icon: Layers,
   name: 'Identidade',
-  desc: 'Experiências visuais com intenção e personalidade.'
+  desc: 'A personalidade da sua marca no site, no feed e em cada arte.'
 }, {
   icon: Compass,
   name: 'Estratégia',
-  desc: 'Entender o negócio antes de desenhar a solução.'
+  desc: 'Entender sua marca, seu público e a mensagem de cada projeto ou publicação.'
 }, {
   icon: Zap,
   name: 'Tecnologia',

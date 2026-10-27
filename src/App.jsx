@@ -9,7 +9,7 @@ import Footer from './components/layout/Footer'
 import LiveProjectsSection from './sections/LiveProjectsSection'
 import EngagementSection from './sections/EngagementSection'
 import Header from './components/layout/Header'
-import BackToTop from './components/layout/BackToTop'
+import PageScrollbar from './components/layout/PageScrollbar'
 
 export default function App() {
   return (
@@ -27,7 +27,7 @@ export default function App() {
         <ContactSection />
       </main>
       <Footer />
-      <BackToTop />
+      <PageScrollbar />
     </MotionProvider>
   )
 }

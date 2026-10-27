@@ -1,0 +1,78 @@
+﻿/* Native fallback for touch devices and nested scrollable areas. */
+html, body, body * { scrollbar-width: thin; scrollbar-color: #8daf4d #10110f; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #10110f; }
+::-webkit-scrollbar-thumb { background: #8daf4d; border: 2px solid #10110f; border-radius: 20px; }
+::-webkit-scrollbar-thumb:hover { background: var(--lime); }
+::-webkit-scrollbar-corner { background: #10110f; }
+@supports selector(::-webkit-scrollbar) {
+  html, body, body * { scrollbar-width: auto; scrollbar-color: auto; }
+}
+html.has-page-scrollbar { scrollbar-width: none; }
+html.has-page-scrollbar::-webkit-scrollbar { display: none; }
+
+.section-index { display: none; position: fixed; z-index: 26; right: 22px; bottom: 22px; width: 206px; }
+.section-index-toggle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  width: 100%;
+  min-height: 48px;
+  padding: 13px 16px;
+  overflow: hidden;
+  border: 1px solid #c7f36b30;
+  border-radius: 12px;
+  background: #10110fd9;
+  color: var(--paper);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 6px 28px #0002;
+  text-align: left;
+  transition: border-color .2s, background .2s;
+}
+.section-index-toggle:hover, .section-index.is-open .section-index-toggle { border-color: #c7f36b70; background: #10110ff0; }
+.section-index-number { flex-shrink: 0; color: var(--lime); font: 500 11px/1 'Space Grotesk Variable', sans-serif; }
+.section-index-number > span { color: #8d9480; margin-left: 5px; }
+.section-index-current { flex: 1; font-size: 12px; line-height: 1.5; }
+.section-index-toggle > svg { color: #a8b098; transition: transform .2s; }
+.section-index.is-open .section-index-toggle > svg { transform: rotate(180deg); }
+.section-index-progress { position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: #c7f36b12; }
+.section-index-progress > span { display: block; width: 100%; height: 100%; background: var(--lime); transform: scaleX(var(--page-progress, 0)); transform-origin: left; }
+.section-index-panel {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  right: 0;
+  width: 248px;
+  max-height: calc(100dvh - 220px);
+  overflow-y: auto;
+  padding: 14px 8px 8px;
+  border: 1px solid #ffffff24;
+  border-radius: 14px;
+  background: #10110ff0;
+  color: var(--paper);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+  box-shadow: 0 16px 44px #0004;
+}
+.section-index-panel[hidden] { display: none; }
+.section-index-caption { display: block; padding: 3px 12px 12px; color: #a8b098; font-size: 8px; letter-spacing: .15em; }
+.section-index-panel ol { list-style: none; margin: 0; padding: 0; }
+.section-index-link { display: flex; gap: 12px; align-items: center; min-height: 40px; padding: 10px 12px; border-radius: 8px; color: #cdd0c6; font-size: 12px; line-height: 1.5; transition: background .2s, color .2s; }
+.section-index-link-number { font: 10px 'Space Grotesk Variable', sans-serif; color: #929c82; }
+.section-index-link > svg { margin-left: auto; opacity: 0; }
+.section-index-link[aria-current], .section-index-link:hover, .section-index-link:focus-visible { color: var(--lime); background: #c7f36b12; }
+.section-index-link[aria-current] .section-index-link-number { color: var(--lime); }
+.section-index-link[aria-current] > svg, .section-index-link:hover > svg, .section-index-link:focus-visible > svg { opacity: 1; }
+.section-index-link:focus-visible { outline-offset: -2px; }
+.mobile-page-progress { position: fixed; z-index: 31; top: 76px; left: 0; width: 100%; height: 2px; background: #c7f36b12; pointer-events: none; }
+.mobile-page-progress > span { display: block; width: 100%; height: 100%; background: var(--lime); box-shadow: 0 0 8px #c7f36b45; transform: scaleX(var(--page-progress, 0)); transform-origin: left; }
+@media (min-width: 761px) and (hover: hover) and (pointer: fine) and (forced-colors: none) {
+  .section-index { display: block; }
+  .mobile-page-progress { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .section-index-toggle, .section-index-toggle > svg, .section-index-link { transition: none; } }
+@media (forced-colors: active) {
+  html, body, body * { scrollbar-color: auto; scrollbar-width: auto; }
+  .mobile-page-progress { display: none; }
+}

@@ -11,7 +11,7 @@
   --stroke: #ffffff16;
   --gray: #8a8a8a;
   --line: #e8e5de;
-  --ease: cubic-bezier(.22,1,.36,1);
+  --ease: cubic-bezier(.25,.1,.25,1);
   font-size: 18px;
 }
 

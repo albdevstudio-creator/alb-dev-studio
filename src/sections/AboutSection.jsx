@@ -19,7 +19,7 @@ export default function AboutSection() {
         </div>
         <Reveal className="about-intro" delay={.15}>
           <Asterisk size={68} strokeWidth={1} className="about-graphic" aria-hidden="true" />
-          <p>A ALB Studio Dev é um estúdio criativo independente que une design e desenvolvimento para construir experiências digitais personalizadas, funcionais e visualmente marcantes.</p>
+          <p>A ALB Studio Dev é um estúdio criativo independente que une design gráfico e desenvolvimento web. Criamos sites, artes para redes sociais e peças para campanhas, com uma linguagem visual que conecta cada ponto de contato à identidade da sua marca.</p>
           <span className="about-annotation">IDEIAS COM PERSONALIDADE.<br />EXPERIÊNCIAS COM PROPÓSITO.</span>
         </Reveal>
       </div>
