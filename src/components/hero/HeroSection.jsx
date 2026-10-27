@@ -1,6 +1,5 @@
 import { ArrowDown, Asterisk } from 'lucide-react'
 import { Reveal, TextReveal } from '../animation/Motion'
-import Header from '../layout/Header'
 import HeroBackgroundEffects from './HeroBackgroundEffects'
 import HeroButtons from './HeroButtons'
 import HeroProjectsShowcase from './HeroProjectsShowcase'
@@ -8,7 +7,6 @@ import HeroProjectsShowcase from './HeroProjectsShowcase'
 export default function HeroSection() {
   return <section id="inicio" className="hero alb-hero section-dark" aria-labelledby="hero-title">
     <HeroBackgroundEffects />
-    <Header />
     <div className="container alb-hero-main">
       <div className="alb-hero-copy">
         <Reveal><div className="alb-hero-eyebrow"><span />ESTÚDIO CRIATIVO INDEPENDENTE</div></Reveal>

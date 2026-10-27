@@ -6,6 +6,29 @@
   color: var(--paper);
   z-index: 30;
 }
+.back-to-top {
+  position: fixed;
+  right: max(22px, env(safe-area-inset-right));
+  bottom: max(22px, env(safe-area-inset-bottom));
+  z-index: 25;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  color: var(--lime);
+  background: #090909c9;
+  border: 1px solid #c7f36b55;
+  border-radius: 50%;
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 6px 24px #0003;
+  transition: transform .25s, background .25s, color .25s;
+}
+.back-to-top:hover { transform: translateY(-3px); background: var(--lime); color: var(--ink); }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .back-to-top { transition: none; }
+}
 .header-inner {
   height: 88px;
   display: flex;
