@@ -7,6 +7,7 @@ import { liveProjects, socialProjects } from '../data/liveProjects'
 import HeroBackgroundEffects from '../components/hero/HeroBackgroundEffects'
 import { whatsappLink } from '../data/contact'
 import SiteShowcase from '../components/projects/SiteShowcase'
+import SocialExamplesGallery from '../components/projects/SocialExamplesGallery'
 
 const categories = [{ id: 'sites', label: 'Sites', count: liveProjects.length }, { id: 'social', label: 'Design para redes sociais', count: socialProjects.length }]
 
@@ -39,13 +40,13 @@ export default function LiveProjectsSection() {
       </div>
       {categories.map(item => <div key={item.id} id={`portfolio-panel-${item.id}`} role="tabpanel" aria-labelledby={`portfolio-tab-${item.id}`} hidden={category !== item.id} tabIndex={0}>
         {category === item.id && <m.div initial={reduce ? false : { opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: reduce ? 0 : .5, ease: [.25, .1, .25, 1] }}>
-          {item.id === 'sites' ? <SiteShowcase /> : socialProjects.length > 0 ? <div className="social-projects-grid">
-            {socialProjects.map(project => <article className="social-project" key={project.id}>
-              <div className="social-art-grid">{project.images.map((image, index) => <img key={image.src} src={image.src} alt={image.alt} width={image.width} height={image.height} loading="lazy" decoding="async" />)}</div>
-              <span className="small-label">{project.category}</span><h3>{project.name}</h3><p>{project.description}</p>
-            </article>)}
-          </div> : <div className="social-design-intro">
-            <div className="social-design-copy"><span className="small-label">DESIGN PARA SUA MARCA</span><h3>Sua essência.<br />Em cada publicação.</h3><p>Posts, stories e carrosséis feitos sob medida para criar uma presença visual consistente. Da escolha das cores à composição, cada peça fala a linguagem da sua marca.</p><a className="social-design-cta" href={whatsappLink('criação de artes para redes sociais')} target="_blank" rel="noopener noreferrer">Conversar sobre minhas artes <ArrowUpRight size={19} aria-hidden="true" /></a></div>
+          {item.id === 'sites' ? <SiteShowcase /> : <div className="social-design-intro">
+            <div className="social-design-copy">
+              <span className="small-label">DESIGN PARA SUA MARCA</span><h3>Sua essência.<br />Em cada publicação.</h3>
+              <p>Posts, stories e carrosséis feitos sob medida para criar uma presença visual consistente. Da escolha das cores à composição, cada peça fala a linguagem da sua marca.</p>
+              <div className="social-design-actions"><a className="social-design-cta" href={whatsappLink('criação de artes para redes sociais')} target="_blank" rel="noopener noreferrer">Conversar sobre minhas artes <ArrowUpRight size={19} aria-hidden="true" /></a></div>
+              <SocialExamplesGallery />
+            </div>
             <div className="social-design-formats">
               {[{ icon: Images, name: 'Posts para o feed', text: 'Composições para apresentar sua marca, seus produtos e suas ideias.' }, { icon: Layers, name: 'Carrosséis', text: 'Uma sequência visual para desenvolver mensagens e contar histórias.' }, { icon: Smartphone, name: 'Stories e campanhas', text: 'Artes adaptadas aos formatos e aos momentos da sua comunicação.' }].map(({ icon: Icon, name, text }, index) => <div className="social-design-format" key={name}><Icon size={24} strokeWidth={1.4} aria-hidden="true" /><div><span>0{index + 1}</span><h4>{name}</h4><p>{text}</p></div></div>)}
             </div>

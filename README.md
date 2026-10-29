@@ -68,6 +68,12 @@ A seção Projetos no ar apresenta cinco sites com capturas reais, descrições 
 
 Os links e textos ficam em [`src/data/liveProjects.js`](src/data/liveProjects.js). As capturas da seção ficam em `public/projects/` e são servidas localmente.
 
+A aba **Design para redes sociais** preserva a apresentação do serviço e reúne exemplos de Nexora, Aura e Domus. A chamada **Explore nossas criações** apresenta cartões com o nome da marca e a ação **Ver artes**. No celular, as prévias maiores têm rolagem horizontal e alinhamento ao navegar pelo teclado. Cada cartão abre a marca correspondente, com post estático, carrossel e story, ampliação com zoom e contato pelo WhatsApp com o formato escolhido. A navegação aceita teclado e toque.
+
+As peças e seus metadados ficam em `src/data/socialProjects.js`. Os PNGs originais permanecem nas pastas das marcas em `src/assets/` e são carregados ao ampliar. As prévias WebP de 810 px e miniaturas de 240 px ficam em `src/assets/social-previews/`. Para regenerá-las após atualizar as artes, execute `npm run assets:social` (requer Google Chrome instalado). A galeria antecipa somente a próxima prévia do carrossel.
+
+Para validar especificamente essa experiência, execute `npm run build` e `npm run test:ui -- tests/social-gallery.spec.js`.
+
 ## Organização do projeto
 
 ```text

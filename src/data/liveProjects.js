@@ -44,6 +44,4 @@ export const liveProjects = [
   },
 ].map(project => ({ ...project, link: projectUrls[project.id], image: `/projects/${project.id}.jpg`, mobileImage: `/projects/${project.id}-mobile.jpg` }))
 
-// Add real design work here: { id, name, category, description,
-// images: [{ src, alt, width, height }] }. Only supplied artwork belongs in this selection.
-export const socialProjects = []
+export { socialProjects } from './socialProjects'
